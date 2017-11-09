@@ -1,0 +1,27 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="image"
+            type="cn.autoio.image.model.Image" />
+
+        <variable
+            name="event"
+            type="cn.autoio.image.view.event.ImagePagerItemFragmentEvent" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_height="match_parent">
+
+        <com.github.chrisbanes.photoview.PhotoView
+            normalImage="@{image.path}"
+            rotation="@{image.rotation}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{()->event.onChangeState()}" />
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,63 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="showState"
+            type="android.databinding.ObservableBoolean" />
+
+        <variable
+            name="event"
+            type="cn.autoio.image.view.event.ImagePagerFragmentEvent" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_height="match_parent">
+
+        <cn.autoio.image.view.custom.IViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            showing="@{showState}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->event.onContraRotate()}"
+            android:src="@drawable/ic_rotate" />
+
+        <!-- 标题区-->
+        <FrameLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/titleFrame"
+                showing="@{showState}"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+        </FrameLayout>
+
+        <!-- 导航区 -->
+        <FrameLayout
+            android:id="@+id/navigationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <FrameLayout
+                android:id="@+id/navigationFrame"
+                showing="@{showState}"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+        </FrameLayout>
+    </RelativeLayout>
+</layout>
+

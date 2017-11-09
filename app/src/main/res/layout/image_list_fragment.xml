@@ -3,16 +3,25 @@
 
     <data>
 
+        <variable
+            name="checkedCount"
+            type="android.databinding.ObservableInt" />
+
+        <variable
+            name="event"
+            type="cn.autoio.image.view.event.ImageListFragmentEvent" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_image_list"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
             android:padding="16dp">
 
             <ImageView
@@ -20,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
                 android:src="@drawable/ic_arrow_right" />
 
             <TextView
@@ -27,24 +37,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="32dp"
                 android:layout_toEndOf="@id/iconView"
-                android:text="图片"
+                android:text="相册"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="32sp" />
 
             <ImageView
                 android:id="@+id/deleteView"
+                showing="@{checkedCount>0}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:onClick="@{()->event.onDelete()}"
                 android:src="@drawable/ic_delete" />
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="#2D3236" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/imageListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingBottom="4dp"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:paddingTop="4dp" />
     </LinearLayout>
 </layout>
